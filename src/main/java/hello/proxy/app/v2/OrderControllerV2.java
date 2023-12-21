@@ -2,10 +2,7 @@ package hello.proxy.app.v2;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -18,7 +15,7 @@ public class OrderControllerV2 {
     }
 
     @GetMapping("/v2/request")
-    public String request(String itemId) {
+    public String request(@RequestParam(name="itemId") String itemId) {
         orderService.orderItem(itemId);
         return "ok";
     }
